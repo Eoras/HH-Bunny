@@ -18,7 +18,7 @@ Installation
 2. Dump `roll.sql` >> on your database
 3. Use `composer install` to install dependances
 4. Use `npm install` to install dependances
-5. I used WebpackEncore, if css isn't compiled, use `./node_modules/.bin/encore dev`
+5. I used WebpackEncore, you must to compile css and javascript, use `./node_modules/.bin/encore dev`
 6. Enjoy
 
 Screenshots:
