@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block titlePage %}Add new Roll{% endblock %}
+{% block headerTitle %}Add new Roll{% endblock %}
+
+{% block boddyContent %}
+    {% if messages.error is not empty %}
+        <h2 class="text-danger">Error{{ messages.error|length > 1 ? "s" : "" }}</h2>
+    {% endif %}
+    <form action="?r=addRoll" method="POST">
+    <div class="row">
+            <div class="form-group col-3">
+                <label for="dateRaid">Date Raid:</label>
+                <input name="dateRaid" type="datetime-local" class="form-control" id="dateRaid" value="{% if roll.dateRaid is not empty %}
+{{ roll.dateRaid|date('Y-m-d\\TH:i') }}{% endif %}" >
+
+                <small class="text-danger">{{ messages.error.dateRaid ?? "" }}</small>
+            </div>
+            <div class="form-group col-3">
+                <label for="numberMin">Number Min:</label>
+                <input name="numberMin" type="number" class="form-control" id="numberMin" value="{{ roll.numberMin ?? "" }}" min="0">
+                <small class="text-danger">{{ messages.error.numberMin ?? "" }}</small>
+            </div>
+            <div class="form-group col-3">
+                <label for="numberMax">Number Max:</label>
+                <input name="numberMax" type="number" class="form-control" id="numberMax" value="{{ roll.numberMax ?? "" }}">
+                <small class="text-danger">{{ messages.error.numberMax ?? "" }}</small>
+            </div>
+            <div class="form-group col-3">
+                <label for="peopleWhoRolled">Who are you ?</label>
+                <select name="peopleWhoRolled" id="peopleWhoRolled" class="form-control">
+                    <option value="">----------</option>
+                    <option value="Eöras" {{ roll.peopleWhoRolled == "Eöras" ? 'selected' : "" }}>Eöras</option>
+                    <option value="Ohden" {{ roll.peopleWhoRolled == "Ohden" ? 'selected' : "" }}>Ohden</option>
+                </select>
+                <small class="text-danger">{{ messages.error.peopleWhoRolled ?? "" }}</small>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-block btn-dark">Add the roll</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block titlePage %}Show rolls{% endblock %}
+{% block headerTitle %}Show rolls{% endblock %}
+
+{% block boddyContent %}
+<div class="row">
+    <div class="col" id="rolls">
+        <table class="table">
+            <thead class="bg-secondary">
+            <tr>
+                <td scope="col" class="w-25">Date Raid</td>
+                <td scope="col" class="text-right">Min</td>
+                <td scope="col" class="text-right">Max</td>
+                <td scope="col" class="text-right">Roll</td>
+                <td scope="col" class="text-right">Who rolled?</td>
+                {% if admin is defined and admin.authorized == true %}
+                <td scope="col" class="text-right">Actions</td>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for roll in rolls %}
+                <tr>
+                    <td scope="row">
+                        {{ roll.dateRaid|date('d/m/Y H:i') }}<br>
+                        <spann class="text-dark">{{ roll.dateRoll|date('d/m/Y H:i:s') }}</spann>
+                    </td>
+                    <td class="text-right">{{ roll.numberMin }}</td>
+                    <td class="text-right">{{ roll.numberMax }}</td>
+                    <td class="text-danger text-right"><strong>{{ roll.roll|replace({".": ","}) }}</strong></td>
+                    <td class="text-right">{{ roll.peopleWhoRolled }}</td>
+                    {% if admin is defined and admin.authorized == true %}
+                    <td class="text-right">
+                            <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#modal{{ roll.id }}"><i class="fa fa-remove text-danger" aria-hidden="true"></i></button>
+                            {#MODAL#}
+                            <div class="modal fade text-left" id="modal{{ roll.id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-body">
+                                            <h3>Are your sure?</h3>
+                                            <hr class="bg-light">
+                                            <ul>
+                                                <li>Date: {{ roll.dateRoll|date('d/m/Y H:i:s') }}</li>
+                                                <li>Min: {{ roll.numberMin }}</li>
+                                                <li>Max: {{ roll.numberMax }}</li>
+                                                <li class="text-danger">Roll: {{ roll.roll }}</li>
+                                            </ul>
+                                            <form action="?r=delete" method="POST">
+                                                <button type="button" class="btn btn-dark d-inline" data-dismiss="modal"><i class="fa fa-remove text-danger" aria-hidden="true"></i> Cancel</button>
+                                                <button class="btn btn-dark d-inline float-right clearfix" type="submit" name="delete" value="{{ roll.id }}"><i class="fa fa-check text-success" aria-hidden="true"></i> Yes delete</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {#MODAL FIN#}
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

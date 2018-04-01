@@ -1,0 +1,15 @@
+{
+    "name": "pauldossantos/badbunny.eoras_180331_dev",
+    "require": {
+        "twig/extensions": "^1.5"
+    },
+    "authors": [
+        {
+            "name": "Eoras",
+            "email": "pauldsb@outlook.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Eoras\\": "src/"}
+    }
+}

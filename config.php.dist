@@ -1,0 +1,15 @@
+<?php
+
+/* This is variable for the website, change:
+<NameDatabase>:         name of your database
+<User>                  your user name for database (root?)
+<Password>              your password for database
+<PasswordForAdmins>:    password for admins
+<name1>, <name2> ...:   admin's name
+*/
+
+define ('DSN', 'mysql:host=localhost;dbname=<NameDatabase>');
+define ('USER', '<User>');
+define ('PASSWORD', '<Password>');
+define ('ADMINPSWD', '<PasswordForAdmins>');
+define ('ADMINS', ['<name1>', '<name2>']);

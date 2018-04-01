@@ -1,0 +1,21 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+
+body {
+    h1, h2, h3, h4, h5, .title {
+        font-family: 'Josefin Sans', sans-serif;
+
+    }
+    color: white;
+    background-color: black;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.soon {
+}
+
+.red {
+    border: solid red 1px;
+}

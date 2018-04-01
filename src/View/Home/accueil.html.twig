@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block titlePage %}Welcome{% endblock %}
+{% block headerTitle %}Welcome{% endblock %}
+
+{% block boddyContent %}
+<div class="row">
+    <div class="col" id="rolls">
+        <ul>
+            <li>Next raid: <span class="text-danger">08/04/2018 - 21:00</span></li>
+            <li>Show list of rolls: <a href="?r=showAll" data-toggle="tooltip" title="Show rolls"><span class="fa fa-list m-0 mx-2 text-light"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

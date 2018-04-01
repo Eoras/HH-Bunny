@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block titlePage %}Admin login{% endblock %}
+{% block headerTitle %}Admin login{% endblock %}
+
+{% block boddyContent %}
+    <form action="#" method="POST">
+        <div class="row">
+            <div class="form-group text-center col-4 offset-4">
+                <label for="password" class="{{ messages.error.password ? "text-danger" : "" }}">{{ adminGetName|capitalize }}</label>
+                <input name="password" type="password" class="form-control text-center {{ messages.error.password ? "is-invalid" : "" }}" id="password" autofocus>
+                <small class="text-danger">{{ messages.error.password ?? "" }}</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-5">
+                <button type="submit" class="btn btn-block btn-dark">Login</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
