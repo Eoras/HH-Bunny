@@ -22,15 +22,6 @@ class RollManager extends EntityManager
         return $statement->fetchAll();
     }
 
-    private $dateRoll;
-    private $dateRaid;
-    private $numberMin;
-    private $numberMax;
-    private $roll;
-    private $peopleWhoRolled;
-    private $broochFor;
-    private $whoGetBrooch;
-
     public function add(Roll $roll)
     {
         $query = "INSERT INTO roll (dateRoll, dateRaid, numberMin, numberMax, roll, peopleWhoRolled) VALUES (:dateRoll, :dateRaid, :numberMin, :numberMax, :roll, :peopleWhoRolled)";
